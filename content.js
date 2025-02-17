@@ -1,30 +1,30 @@
 function extractProductInfo() {
-    // 상품명 추출
-    const title = document.querySelector('.prod-buy-header__title')?.textContent?.trim();
-    
-    // 가격 추출 (원 제거)
-    const price = document.querySelector('.total-price')?.textContent?.trim()
+  // 상품명 추출
+  const title = document.querySelector('.prod-buy-header__title')?.textContent?.trim();
+
+  // 가격 추출 (원 제거)
+  const price = document.querySelector('.total-price')?.textContent?.trim()
       .replace('원', '').replace(/,/g, '');
-    
-    // 이미지 URL 추출 (최대 4개)
-    const imageUrls = [];
-    document.querySelectorAll('.prod-image__item img').forEach((img, index) => {
-      if (index < 4 && img.src) {
-        // // 로 시작하는 URL을 https://로 변환
-        const imgUrl = img.src.replace(/^\/\//, 'https://');
-        imageUrls.push(imgUrl);
-      }
-    });
-  
-    // 데이터를 JSON으로 변환
-    const productData = {
-      title,
-      price,
-      imageUrls
-    };
-  
-    return productData;
-  }
+
+  // 이미지 URL 추출 (최대 4개)
+  const imageUrls = [];
+  document.querySelectorAll('.prod-image__item img').forEach((img, index) => {
+    if (index < 4 && img.src) {
+      // URL을 https://로 시작하도록 변경하고 이미지 크기를 492x492ex로 고정
+      const imgUrl = img.src
+          .replace(/^\/\//, 'https://')
+          .replace(/\/\d+x\d+ex\//, '/492x492ex/');
+      imageUrls.push(imgUrl);
+    }
+  });
+
+  // 데이터를 JSON으로 변환
+  return {
+    title,
+    price,
+    imageUrls
+  };
+}
   
   // 플로팅 버튼 생성
   function createFloatingButton() {
