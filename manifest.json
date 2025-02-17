@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "쿠팡 상품 정보 추출기",
-    "version": "1.1",
+    "version": "1.2",
     "description": "쿠팡 상품 정보를 클립보드로 복사합니다",
     "permissions": [
       "activeTab",

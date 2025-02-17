@@ -18,11 +18,23 @@ function extractProductInfo() {
     }
   });
 
+  // 품명 및 모델명 추출
+  let modelName = '';
+  const rows = document.querySelectorAll('.prod-delivery-return-policy-table tr');
+  for (const row of rows) {
+    const th = row.querySelector('th');
+    if (th?.textContent?.trim() === '품명 및 모델명') {
+      modelName = row.querySelector('td')?.textContent?.trim() || '';
+      break;
+    }
+  }
+
   // 데이터를 JSON으로 변환
   return {
     title,
     price,
-    imageUrls
+    imageUrls,
+    description: modelName
   };
 }
   
