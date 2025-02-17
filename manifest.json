@@ -1,0 +1,24 @@
+{
+    "manifest_version": 3,
+    "name": "쿠팡 상품 정보 추출기",
+    "version": "1.0",
+    "description": "쿠팡 상품 정보를 클립보드로 복사합니다",
+    "permissions": [
+      "activeTab",
+      "clipboardWrite"
+    ],
+    "action": {
+      "default_icon": {
+        "16": "icons/icon16.png",
+        "48": "icons/icon48.png",
+        "128": "icons/icon128.png"
+      }
+    },
+    "content_scripts": [
+      {
+        "matches": ["https://www.coupang.com/vp/products/*"],
+        "js": ["content.js"],
+        "css": ["styles.css"]
+      }
+    ]
+  }
