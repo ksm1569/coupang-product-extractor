@@ -30,12 +30,28 @@ function extractProductInfo() {
     }
   }
 
+  // 별점 정보 추출
+  let rating = 0;
+  const ratingElement = document.querySelector('#prod-review-nav-link .rating-star-num');
+  if (ratingElement) {
+    const widthStyle = ratingElement.style.width;
+    if (widthStyle) {
+      // 퍼센트 값을 추출 (예: "100.0%" -> 100.0)
+      const percentValue = parseFloat(widthStyle.replace('%', ''));
+      // 퍼센트를 5점 만점의 별점으로 변환 (100% = 5점)
+      rating = (percentValue / 100) * 5;
+      // 소수점 한 자리까지 표시
+      rating = Math.round(rating * 10) / 10;
+    }
+  }
+
   // 데이터를 JSON으로 변환
   return {
     title,
     price,
     imageUrls,
-    description: modelName
+    description: modelName,
+    rating
   };
 }
   
