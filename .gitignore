@@ -1,0 +1,22 @@
+# 환경변수 파일
+.env.local
+.env
+
+# 시스템 파일
+.DS_Store
+Thumbs.db
+
+# IDE 설정 파일
+.vscode/
+.idea/
+
+# 로그 파일
+*.log
+
+# 임시 파일
+*.tmp
+*.temp
+
+# 백업 파일
+*.bak
+*.backup 
